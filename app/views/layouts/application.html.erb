@@ -79,7 +79,9 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Ty's Reddit 2016</p>
+        <% if Rails.env.development? %>
+          <p><%= params[:controller] %>#<%= params[:action] %></p>
+        <% end %>
       </footer>
 
     </div> <!-- /container -->
