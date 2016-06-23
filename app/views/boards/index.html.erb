@@ -2,7 +2,7 @@
 
 <h1>Listing Boards</h1>
 
-<table>
+<table class="table table-hover table-striped table-condensed">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,9 +15,9 @@
       <tr>
         <td><%= board.name %></td>
 <br>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', board, class: "btn btn-default btn-xs"  %></td>
+        <td><%= link_to 'Edit', edit_board_path(board), class: "btn btn-default btn-xs"  %></td>
+        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Board', new_board_path %>
+<%= link_to 'New Board', new_board_path, class: "btn btn-default btn-xs"  %>
