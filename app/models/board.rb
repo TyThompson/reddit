@@ -1,6 +1,5 @@
 class Board < ActiveRecord::Base
   validates :name, presence: true
-  validates :mod_id, presence: true
   belongs_to :mod_id
   has_many :subjects
 
