@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :subjects
+  resources :boards do
+    resources :subjects
+  end
+  resources :subjects do
+    resources :comments
+  end
   resources :votes
-  resources :comments
-  resources :boards
+
   root to: 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

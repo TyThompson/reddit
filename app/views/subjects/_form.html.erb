@@ -10,11 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :board_id, value: @board %>
+      <%= f.hidden_field :value, value: 0 %>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -22,14 +20,6 @@
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.number_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :board_id %><br>
-    <%= f.number_field :board_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

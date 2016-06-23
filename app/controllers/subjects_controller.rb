@@ -13,6 +13,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @subject = Subject.new
+    @board = params[:id]
   end
 
   # GET /subjects/1/edit

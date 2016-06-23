@@ -1,6 +1,6 @@
 class Board < ActiveRecord::Base
   validates :name, presence: true
-  belongs_to :mod_id
+  belongs_to :user
   has_many :subjects, :dependent => :destroy
 
     # t.string :name

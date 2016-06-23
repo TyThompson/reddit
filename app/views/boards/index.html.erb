@@ -13,7 +13,7 @@
   <tbody>
     <% @boards.each do |board| %>
       <tr>
-        <td><%= board.name %> subjects: <span class="badge"><%= board.subjects.count %></span></td>
+        <td><%= board.name %>| subjects: <span class="badge"><%= board.subjects.count %></span></td>
         <br>
         <td><%= link_to 'Show', board, class: "btn btn-default btn-xs"  %></td>
         <td><%= link_to 'Edit', edit_board_path(board), class: "btn btn-default btn-xs"  %></td>
