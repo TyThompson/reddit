@@ -3,9 +3,8 @@ class Subject < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :board_id, presence: true
-  belongs_to :board
-  has_many :comments
-
+  belongs_to :board_id
+  has_many :comments, :dependent => :destroy
 
 
   # create_table :subjects do |t|
