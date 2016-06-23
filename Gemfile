@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'devise'
 gem 'turbolinks'
 gem 'quiet_assets'
 gem 'twitter-bootstrap-rails'
