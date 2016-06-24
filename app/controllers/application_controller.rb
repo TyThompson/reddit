@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
   include Pundit
   # after_action :verify_authorized, :except => :index, unless: :devise_controller?
   skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
+
   def is_admin?
-    User.admin
+    current_user.admin?
   end
 
   def user_not_authorized

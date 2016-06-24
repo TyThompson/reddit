@@ -81,12 +81,11 @@
       <footer>
         <% if Rails.env.development? %>
           <p><%= params[:controller] %>#<%= params[:action] %></p>
-          <p>Current User ID: <%= current_user.id %></p>
-          <% if current_user %>
-            <div>
-              Admin: <%= current_user.admin? %>
-            </div>
-          <% end %>
+              <% if current_user %>
+                <p>Current User ID: <%= current_user.id %></p>
+                <p>Admin: <%= current_user.admin? %></p>
+              <% end %>
+              <p>Time: <%= Time.now %></p>
         <% end %>
       </footer>
 

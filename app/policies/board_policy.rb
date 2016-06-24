@@ -14,4 +14,7 @@ class BoardPolicy < ApplicationPolicy
   # def create?
   #   true
   # end
+  def is_board_mod?
+    current_user == @board.mod_id
+  end
 end

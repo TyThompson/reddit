@@ -22,6 +22,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
+    authorize @subject
   end
 
   # POST /subjects
@@ -37,6 +38,7 @@ class SubjectsController < ApplicationController
 
   # PATCH/PUT /subjects/1
   def update
+    authorize @subject
     if @subject.update(subject_params)
       redirect_to @subject, notice: 'Subject was successfully updated.'
     else
@@ -46,6 +48,7 @@ class SubjectsController < ApplicationController
 
   # DELETE /subjects/1
   def destroy
+    authorize @subject
     @subject.destroy
     redirect_to subjects_url, notice: 'Subject was successfully destroyed.'
   end
