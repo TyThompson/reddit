@@ -21,8 +21,10 @@
         <td><%= comment.value %></td>
         <td><%= comment.created_at.strftime("%m/%d/%y") %></td>
         <td><%= link_to 'Show', subject_comment_path(subject_id: comment.subject.id, id: comment.id), class: "btn btn-default btn-xs" %></td>
-        <td><%= link_to 'Edit', edit_subject_comment_path(subject_id: comment.subject.id, id: comment.id), class: "btn btn-default btn-xs" %></td>
-        <td><%= link_to 'Destroy', subject_comment_path(subject_id: comment.subject.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %></td>
+        <% if policy(comment).update? %>
+          <td><%= link_to 'Edit', edit_subject_comment_path(subject_id: comment.subject.id, id: comment.id), class: "btn btn-default btn-xs" %></td>
+          <td><%= link_to 'Destroy', subject_comment_path(subject_id: comment.subject.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
