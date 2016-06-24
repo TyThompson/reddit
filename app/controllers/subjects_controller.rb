@@ -9,6 +9,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   def show
     @board = @subject.board_id
+    @comments = @subject.comments
+    @comment = Comment.new
   end
 
   # GET /subjects/new

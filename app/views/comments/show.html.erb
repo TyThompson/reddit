@@ -17,8 +17,8 @@
 
 <p>
   <strong>Thread:</strong>
-  <%= @comment.thread_id %>
+  <%= @comment.subject.title %>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_subject_comment_path(subject_id: @comment.subject.id) %> |
+<%= link_to 'Back', subject_comments_path(subject_id: @comment.subject.id) %>

@@ -1,16 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @board.name %>
+  <strong>Board:</strong>
+  <%= @board.name %> |
+  <strong>Subjects:</strong>
+    <%= @board.subjects.count %>
 </p>
 <p>
 <%= link_to 'Edit', edit_board_path(@board), class: "btn btn-default btn-xs" %> |
 <%= link_to 'Board List', boards_path, class: "btn btn-default btn-xs" %>
-<p>
-  <strong>Subjects:</strong>
-    <%= @board.subjects.count %>
-</p>
 <p>
 
   <table class="table table-hover table-striped table-condensed">

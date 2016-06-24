@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = Comment.new(subject_id: params[:subject_id], user_id: current_user.id)
   end
 
   # GET /comments/1/edit
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to @comment, notice: 'Comment was successfully created.'
+      redirect_to [@comment.subject, @comment], notice: 'Comment was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
-      redirect_to @comment, notice: 'Comment was successfully updated.'
+      redirect_to [@comment.subject, @comment], notice: 'Comment was successfully updated.'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   def destroy
     @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    redirect_to subject_comments_url, notice: 'Comment was successfully destroyed.'
   end
 
   private
@@ -53,6 +53,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:user_id, :description, :value, :thread_id)
+      params.require(:comment).permit(:user_id, :description, :value, :subject_id)
     end
 end

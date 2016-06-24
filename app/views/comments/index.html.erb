@@ -20,9 +20,9 @@
         <td><%= comment.description %></td>
         <td><%= comment.value %></td>
         <td><%= comment.created_at.strftime("%m/%d/%y") %></td>
-        <td><%= link_to 'Show', comment, class: "btn btn-default btn-xs" %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-default btn-xs" %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Show', subject_comment_path(subject_id: comment.subject.id, id: comment.id), class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_subject_comment_path(subject_id: comment.subject.id, id: comment.id), class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Destroy', subject_comment_path(subject_id: comment.subject.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path, class: "btn btn-default btn-xs" %>
+<%= link_to 'New Comment', new_subject_comment_path, class: "btn btn-default btn-xs" %>
