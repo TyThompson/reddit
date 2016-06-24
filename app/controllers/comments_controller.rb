@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
+  
   # GET /comments
   def index
     @comments = Comment.all

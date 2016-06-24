@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @comment.user_id %>
+  <strong>Thread Title:</strong>
+  <%= @comment.subject.title %>
 </p>
-
 <p>
-  <strong>Description:</strong>
+  <strong>Thread Content:</strong>
+  <%= @comment.subject.description %>
+</p>
+<p>
+  <strong>Votes:</strong>
+  <%= @comment.value %> |
+  <strong>Created by:</strong>
+  <%= @comment.user.email %>
+</p>
+<p>
+  <strong>Comment:</strong>
   <%= @comment.description %>
 </p>
 
-<p>
-  <strong>Value:</strong>
-  <%= @comment.value %>
-</p>
-
-<p>
-  <strong>Thread:</strong>
-  <%= @comment.subject.title %>
-</p>
-
-<%= link_to 'Edit', edit_subject_comment_path(subject_id: @comment.subject.id) %> |
-<%= link_to 'Back', subject_comments_path(subject_id: @comment.subject.id) %>
+<%= link_to 'Edit', edit_subject_comment_path(subject_id: @comment.subject.id), class: "btn btn-default btn-xs"  %> |
+<%= link_to 'Back', subject_comments_path(subject_id: @comment.subject.id), class: "btn btn-default btn-xs"  %>

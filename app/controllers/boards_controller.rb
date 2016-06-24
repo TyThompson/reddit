@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
 
   # GET /boards
   def index
@@ -8,6 +9,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1
   def show
+    # authorize @board
   end
 
   # GET /boards/new
@@ -17,6 +19,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1/edit
   def edit
+    authorize @board
   end
 
   # POST /boards
@@ -32,6 +35,7 @@ class BoardsController < ApplicationController
 
   # PATCH/PUT /boards/1
   def update
+    authorize @board
     if @board.update(board_params)
       redirect_to @board, notice: 'Board was successfully updated.'
     else
@@ -41,6 +45,7 @@ class BoardsController < ApplicationController
 
   # DELETE /boards/1
   def destroy
+    authorize @board
     @board.destroy
     redirect_to boards_url, notice: 'Board was successfully destroyed.'
   end

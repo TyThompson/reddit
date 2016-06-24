@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
 
   # GET /subjects
   def index

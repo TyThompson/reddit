@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: [:show, :edit, :update, :destroy]
-
+  skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
+  
   # GET /votes
   def index
     @votes = Vote.all
