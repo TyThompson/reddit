@@ -17,8 +17,10 @@
         <td><%= board.name %>| subjects: <span class="badge"><%= board.subjects.count %></span></td>
         <br>
         <td><%= link_to 'Show', board, class: "btn btn-default btn-xs"  %></td>
+        <% if policy(board).update? %>
         <td><%= link_to 'Edit', edit_board_path(board), class: "btn btn-default btn-xs"  %></td>
         <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs"  %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -10,7 +10,6 @@
 <%= link_to 'Edit', edit_board_path(@board), class: "btn btn-default btn-xs" %> |
 <%= link_to 'Board List', boards_path, class: "btn btn-default btn-xs" %>
 <p>
-
   <table class="table table-hover table-striped table-condensed">
     <thead>
       <tr>
@@ -27,11 +26,12 @@
           <td><%= subject.created_at.strftime("%m/%d/%y") %></td>
           <td><%= link_to 'Show', subject, class: "btn btn-default btn-xs"  %></td>
           <td><%= link_to 'Edit', edit_subject_path(subject), class: "btn btn-default btn-xs"  %></td>
+          <% if policy(subject).update? %>
           <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs"  %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
-
 </p>
   <%= link_to 'New', new_subject_path(id: @board.id), class: "btn btn-default btn-xs" %>
