@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   validates :text, presence: true
   validates :subject_id, presence: true
   belongs_to :user
-  belongs_to :subject_id
+  belongs_to :subject
 
 
   # create_table :comments do |t|

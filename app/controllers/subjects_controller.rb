@@ -8,6 +8,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1
   def show
+    @board = @subject.board_id
   end
 
   # GET /subjects/new
@@ -44,6 +45,10 @@ class SubjectsController < ApplicationController
   def destroy
     @subject.destroy
     redirect_to subjects_url, notice: 'Subject was successfully destroyed.'
+  end
+
+  def subject_creator
+    @subject_creator = User.where(user_id: @subject.user_id).pluck(:email)
   end
 
   private

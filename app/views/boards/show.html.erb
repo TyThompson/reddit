@@ -26,7 +26,7 @@
         <tr>
           <td><%= subject.value %></td>
           <td><%= subject.title %></td>
-          <td><%= subject.created_at %></td>
+          <td><%= subject.created_at.strftime("%m/%d/%y") %></td>
           <td><%= link_to 'Show', subject, class: "btn btn-default btn-xs"  %></td>
           <td><%= link_to 'Edit', edit_subject_path(subject), class: "btn btn-default btn-xs"  %></td>
           <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs"  %></td>

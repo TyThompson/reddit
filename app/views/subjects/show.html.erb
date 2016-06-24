@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @subject.user_id %>
+  <strong>Subject started by:</strong><%= @subject.user_id %>
 </p>
 
 <p>
@@ -16,7 +15,7 @@
 </p>
 
 <p>
-  <strong>Value:</strong>
+  <strong>Votes:</strong>
   <%= @subject.value %>
 </p>
 
@@ -25,5 +24,37 @@
   <%= @subject.board_id %>
 </p>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+<%= link_to 'Edit', edit_subject_path(@subject), class: "btn btn-default btn-xs" %> |
+<%= link_to 'Back', board_path(@subject.board_id), class: "btn btn-default btn-xs" %>
+<p>
+  <strong>Comments:</strong>
+    <%= @subject.comments.count %>
+</p>
+<p>
+
+  <table class="table table-hover table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>votes:</th>
+        <th>User ID:</th>
+        <th>description</th>
+        <th>Created on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @subject.comments.each do |comment| %>
+        <tr>
+          <td><%= comment.value %></td>
+          <td><%= comment.user_id %></td>
+          <td><%= comment.description %></td>
+          <td><%= comment.created_at.strftime("%m/%d/%y") %></td>
+          <td><%= link_to 'Show', comment, class: "btn btn-default btn-xs"  %></td>
+          <td><%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-default btn-xs"  %></td>
+          <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs"  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</p>
+  <%= link_to 'New', new_subject_comment_path(subject_id: @subject.id), class: "btn btn-default btn-xs" %>
