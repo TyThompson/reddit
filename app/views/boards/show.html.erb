@@ -22,9 +22,8 @@
       <% @board.subjects.each do |subject| %>
         <tr>
           <td><%= subject.value %></td>
-          <td><%= subject.title %></td>
+          <td><%= link_to subject.title, subject %></td>
           <td><%= subject.created_at.strftime("%m/%d/%y") %></td>
-          <td><%= link_to 'Show', subject, class: "btn btn-default btn-xs"  %></td>
           <% if policy(subject).update? %>
           <td><%= link_to 'Edit', edit_subject_path(subject), class: "btn btn-default btn-xs"  %></td>
           <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs"  %></td>

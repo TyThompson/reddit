@@ -18,11 +18,10 @@
     <% @subjects.each do |subject| %>
       <tr>
         <td><%= subject.user_id %></td>
-        <td><%= subject.title %></td>
+        <td><%= link_to subject.title, subject %></td>
         <td><%= subject.description %></td>
         <td><%= subject.value %></td>
         <td><%= subject.board_id %></td>
-        <td><%= link_to 'Show', subject %></td>
         <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
         <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
