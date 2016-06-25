@@ -13,16 +13,13 @@
   <strong>Description:</strong>
   <%= @subject.description %>
 </p>
-
+<%= link_to 'Edit', edit_subject_path(@subject), class: "btn btn-default btn-xs" %>
 <p>
   <strong>Votes:</strong>
   <%= @subject.value %> |
   <strong>Board:</strong>
-  <%= @subject.board.name %>
+  <%= link_to @subject.board.name, board_path(@subject.board_id) %>
 </p>
-
-<%= link_to 'Edit', edit_subject_path(@subject), class: "btn btn-default btn-xs" %> |
-<%= link_to 'Back', board_path(@subject.board_id), class: "btn btn-default btn-xs" %>
 <p>
   <strong>Comments:</strong>
     <%= @subject.comments.count %>

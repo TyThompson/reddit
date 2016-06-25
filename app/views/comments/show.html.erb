@@ -2,7 +2,7 @@
 
 <p>
   <strong>Thread Title:</strong>
-  <%= @comment.subject.title %>
+  <%= link_to @comment.subject.title, subject_url(@comment.subject.id) %>
 </p>
 <p>
   <strong>Thread Content:</strong>
@@ -18,6 +18,4 @@
   <strong>Comment:</strong>
   <%= @comment.description %>
 </p>
-
-<%= link_to 'Edit', edit_subject_comment_path(subject_id: @comment.subject.id), class: "btn btn-default btn-xs"  %> |
-<%= link_to 'Back', subject_url(@comment.subject.id), class: "btn btn-default btn-xs"  %>
+<%= link_to 'Edit', edit_subject_comment_path(subject_id: @comment.subject.id), class: "btn btn-default btn-xs"  %>
