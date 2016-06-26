@@ -16,6 +16,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'better_errors'
+  gem 'rspec-rails'
 end
 
 group :development do
