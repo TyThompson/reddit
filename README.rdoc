@@ -8,3 +8,4 @@
 * Admin panel (you can still make mods and admins through database. Board creators are automatically mods.)
 * Use the votes database
 * Lock down vote system, it is open for troubleshooting currently
+* More tests with Rspec
