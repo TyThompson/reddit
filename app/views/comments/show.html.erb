@@ -14,7 +14,9 @@
   <strong>Votes:</strong>
   <%= @comment.value %> |
   <strong>Created by:</strong>
-  <%= @comment.user.email.split('@').first %>
+  <%= @comment.user.email.split('@').first %> |
+  <strong>Created at:</strong>
+  <%= @comment.created_at.strftime("%m/%d/%y %H:%M UTC") %>
 </p>
 <p>
   <strong>Comment:</strong>
