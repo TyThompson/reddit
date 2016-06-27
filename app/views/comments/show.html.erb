@@ -1,18 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Thread Title:</strong>
+  <strong>Subject:</strong>
   <%= link_to @comment.subject.title, subject_url(@comment.subject.id) %>
 </p>
 <p>
-  <strong>Thread Content:</strong>
+  <strong>Content:</strong>
   <%= @comment.subject.description %>
 </p>
 <p>
+  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
+  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %>
   <strong>Votes:</strong>
   <%= @comment.value %> |
   <strong>Created by:</strong>
-  <%= @comment.user.email %>
+  <%= @comment.user.email.split('@').first %>
 </p>
 <p>
   <strong>Comment:</strong>

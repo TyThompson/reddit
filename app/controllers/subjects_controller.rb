@@ -12,7 +12,7 @@ class SubjectsController < ApplicationController
     @board = @subject.board_id
     @comments = @subject.comments
     @comment = Comment.new
-    @vote = Vote.new(user_id: current_user.id, subject_id: @subject.id)
+    @vote = Vote.new(user_id: current_user.id, subject_id: @subject.id, value: 1)
   end
 
   # GET /subjects/new

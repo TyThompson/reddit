@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Subject started by: </strong><%= @subject.user.email %>
+  <strong>Board:</strong>
+  <%= link_to @subject.board.name, board_path(@subject.board_id) %> |
+  <strong>Subject started by: </strong><%= @subject.user.email.split('@').first %>
 </p>
 
 <p>
+  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
+  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %>
+  <strong>Votes:</strong>
+  <%= @subject.value %> |
   <strong>Title:</strong>
   <%= @subject.title %>
 </p>
@@ -14,17 +20,6 @@
   <%= @subject.description %>
 </p>
 <%= link_to 'Edit', edit_subject_path(@subject), class: "btn btn-default btn-xs" %>
-<BR>
-<BR>
-<p>
-  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
-  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %>
-  <% end %>
-  <strong>Votes:</strong>
-  <%= @subject.value %> |
-  <strong>Board:</strong>
-  <%= link_to @subject.board.name, board_path(@subject.board_id) %>
-</p>
 <p>
   <strong>Comments:</strong>
     <%= @subject.comments.count %>
@@ -34,6 +29,7 @@
   <table class="table table-hover table-striped table-condensed">
     <thead>
       <tr>
+        <th></th>
         <th>votes</th>
         <th>User ID</th>
         <th>description</th>
@@ -43,8 +39,10 @@
     <tbody>
       <% @subject.comments.each do |comment| %>
         <tr>
+          <td><%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
+            <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %></td>
           <td><%= comment.value %></td>
-          <td><%= comment.user_id %></td>
+          <td><%= comment.user.email.split('@').first %></td>
           <td><%= link_to comment.description, subject_comment_path(subject_id: @subject.id, id: comment.id)  %></td>
           <td><%= comment.created_at.strftime("%m/%d/%y") %></td>
           <% if policy(comment).update? %>

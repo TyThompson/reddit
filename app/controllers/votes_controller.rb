@@ -25,7 +25,6 @@ class VotesController < ApplicationController
 
   # POST /votes
   def create
-    authorize @vote
     @vote = Vote.new(vote_params)
 
     if @vote.save
@@ -60,6 +59,6 @@ class VotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def vote_params
-      params.require(:vote).permit(:user_id, :value, :subject_id, :comment_id)
+      params.permit(:vote, :user_id, :value, :subject_id, :comment_id)
     end
 end
