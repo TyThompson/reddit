@@ -14,7 +14,12 @@
   <%= @subject.description %>
 </p>
 <%= link_to 'Edit', edit_subject_path(@subject), class: "btn btn-default btn-xs" %>
+<BR>
+<BR>
 <p>
+  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
+  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %>
+  <% end %>
   <strong>Votes:</strong>
   <%= @subject.value %> |
   <strong>Board:</strong>

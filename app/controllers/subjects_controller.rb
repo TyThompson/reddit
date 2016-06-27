@@ -12,6 +12,7 @@ class SubjectsController < ApplicationController
     @board = @subject.board_id
     @comments = @subject.comments
     @comment = Comment.new
+    @vote = Vote.new(user_id: current_user.id, subject_id: @subject.id)
   end
 
   # GET /subjects/new
@@ -31,6 +32,17 @@ class SubjectsController < ApplicationController
 
     if @subject.save
       redirect_to @subject, notice: 'Subject was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def vote
+    authorize @vote
+    @vote = Vote.new(vote_params)
+
+    if @vote.save
+      redirect_to @vote, notice: 'Vote was successfully created.'
     else
       render :new
     end
@@ -65,6 +77,6 @@ class SubjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def subject_params
-      params.require(:subject).permit(:user_id, :title, :description, :value, :board_id)
+      params.permit(:subject, :user_id, :title, :description, :value, :board_id)
     end
 end
