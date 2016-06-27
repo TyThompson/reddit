@@ -1,5 +1,5 @@
 == Features
-* Forum with board, threads, comments
+* Forum with boards, threads, and comments
 * Devise authentication system
 * Pundit authorization system
 
