@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1
   def show
-    # authorize @board
+    authorize @board
   end
 
   # GET /boards/new

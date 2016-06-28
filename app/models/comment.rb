@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   validates :subject_id, presence: true
   belongs_to :user
   belongs_to :subject
+  has_many :votes, :dependent => :destroy
 
   # create_table :comments do |t|
   #   t.integer :user_id

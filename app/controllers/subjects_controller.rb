@@ -18,7 +18,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @subject = Subject.new
-    @board = params[:id]
+    @board = params[:board_id]
   end
 
   # GET /subjects/1/edit
@@ -29,7 +29,7 @@ class SubjectsController < ApplicationController
   # POST /subjects
   def create
     @subject = Subject.new(subject_params)
-
+    authorize @subject
     if @subject.save
       redirect_to @subject, notice: 'Subject was successfully created.'
     else
@@ -77,6 +77,6 @@ class SubjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def subject_params
-      params.permit(:subject, :user_id, :title, :description, :value, :board_id)
+      params.require(:subject).permit(:user_id, :title, :description, :value, :board_id)
     end
 end
