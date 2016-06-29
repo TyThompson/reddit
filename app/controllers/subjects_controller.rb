@@ -42,7 +42,6 @@ class SubjectsController < ApplicationController
   def upvote
     authorize Subject.where(id: params["subject_id"])
     @vote = Vote.new(subject_id: vote_params)
-    @vote.user_id = current_user.id
     @vote.value = 1
     vote_save
   end
@@ -50,7 +49,6 @@ class SubjectsController < ApplicationController
   def downvote
     authorize Subject.where(id: params["subject_id"])
     @vote = Vote.new(subject_id: vote_params)
-    @vote.user_id = current_user.id
     @vote.value = -1
     vote_save
   end
@@ -98,6 +96,7 @@ class SubjectsController < ApplicationController
     end
 
     def vote_save
+      @vote.user_id = current_user.id
       if @vote.save
         redirect_to :back, notice: 'Vote was successfully created.'
       else
