@@ -10,7 +10,7 @@
     <%= link_to '', subject_upvote_path(subject_id: @subject.id), method: :post, class: "glyphicon glyphicon-arrow-up" %>
     <%= link_to '', subject_downvote_path(subject_id: @subject.id), method: :post, class: "glyphicon glyphicon-arrow-down" %>
   <strong>Votes:</strong>
-  <%= @subject.value %> |
+  <%= @subject_value %> |
   <strong>Title:</strong>
   <%= @subject.title %>
 </p>

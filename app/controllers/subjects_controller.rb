@@ -10,9 +10,11 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   def show
     @board = @subject.board_id
-    @comments = @subject.comments
-    @comment = Comment.new
-    @vote = Vote.new(user_id: current_user.id, subject_id: @subject.id, value: 1)
+    # @comments = @subject.comments
+    # @comment = Comment.new
+    # @vote = Vote.new(user_id: current_user.id, subject_id: @subject.id, value: 1)
+    @subject_value = Vote.where(subject_id: @subject.id).pluck(:value).sum
+
   end
 
   # GET /subjects/new
