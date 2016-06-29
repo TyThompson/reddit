@@ -30,6 +30,14 @@ class ApplicationPolicy
     update?
   end
 
+  def upvote?
+    true
+  end
+
+  def downvote?
+    true
+  end
+
   def destroy?
     false || is_admin?
   end

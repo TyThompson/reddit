@@ -5,10 +5,12 @@ Rails.application.routes.draw do
     resources :subjects
   end
   resources :subjects do
+    post 'upvote'
+    post 'downvote'
     resources :comments
   end
-  resources :votes
 
+  resources :votes
 
 
   # The priority is based upon order of creation: first created -> highest priority.

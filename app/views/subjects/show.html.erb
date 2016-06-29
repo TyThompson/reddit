@@ -7,8 +7,8 @@
 </p>
 
 <p>
-  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
-  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %>
+    <%= link_to '', subject_upvote_path(subject_id: @subject.id), method: :post, class: "glyphicon glyphicon-arrow-up" %>
+    <%= link_to '', subject_downvote_path(subject_id: @subject.id), method: :post, class: "glyphicon glyphicon-arrow-down" %>
   <strong>Votes:</strong>
   <%= @subject.value %> |
   <strong>Title:</strong>

@@ -37,15 +37,20 @@ class SubjectsController < ApplicationController
     end
   end
 
-  def vote
-    authorize @vote
-    @vote = Vote.new(vote_params)
+  def upvote
+    authorize Subject.where(id: params["subject_id"])
+    @vote = Vote.new(subject_id: vote_params)
+    @vote.user_id = current_user.id
+    @vote.value = 1
+    vote_save
+  end
 
-    if @vote.save
-      redirect_to @vote, notice: 'Vote was successfully created.'
-    else
-      render :new
-    end
+  def downvote
+    authorize Subject.where(id: params["subject_id"])
+    @vote = Vote.new(subject_id: vote_params)
+    @vote.user_id = current_user.id
+    @vote.value = -1
+    vote_save
   end
 
   # PATCH/PUT /subjects/1
@@ -78,5 +83,23 @@ class SubjectsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def subject_params
       params.require(:subject).permit(:user_id, :title, :description, :value, :board_id)
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_vote
+      @vote = Vote.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def vote_params
+      params.require(:subject_id)
+    end
+
+    def vote_save
+      if @vote.save
+        redirect_to :back, notice: 'Vote was successfully created.'
+      else
+        redirect_to :back, alert: 'Vote was not created.'
+      end
     end
 end
