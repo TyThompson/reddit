@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :subjects do
     post 'upvote'
     post 'downvote'
-    resources :comments
+    resources :comments do
+      post 'upvote'
+      post 'downvote'
+    end
   end
 
   resources :votes

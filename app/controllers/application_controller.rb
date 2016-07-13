@@ -20,4 +20,17 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
   end
+
+  def set_vote
+    @vote = Vote.find(params[:id])
+  end
+
+  def vote_save
+    @vote.user_id = current_user.id
+    if @vote.save
+      redirect_to :back, notice: 'Vote was successfully created.'
+    else
+      redirect_to :back, alert: 'Vote was not created.'
+    end
+  end  
 end

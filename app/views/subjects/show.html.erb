@@ -39,9 +39,9 @@
     <tbody>
       <% @subject.comments.each do |comment| %>
         <tr>
-          <td><%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
-            <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %></td>
-          <td><%= comment.value %></td>
+          <td><%= link_to '', subject_comment_upvote_path(subject_id: @subject.id, comment_id: comment.id), method: :post, class: "glyphicon glyphicon-arrow-up" %>
+          <%= link_to '', subject_comment_downvote_path(subject_id: @subject.id, comment_id: comment.id), method: :post, class: "glyphicon glyphicon-arrow-down" %></td>
+          <td><%= Vote.where(comment_id: comment.id).pluck(:value).sum %></td>
           <td><%= comment.user.email.split('@').first %></td>
           <td><%= link_to comment.description, subject_comment_path(subject_id: @subject.id, id: comment.id)  %></td>
           <td><%= comment.created_at.strftime("%m/%d/%y") %></td>

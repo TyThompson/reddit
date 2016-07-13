@@ -74,33 +74,22 @@ class SubjectsController < ApplicationController
     @subject_creator = User.where(user_id: @subject.user_id).pluck(:email)
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_subject
-      @subject = Subject.find(params[:id])
-    end
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_subject
+    @subject = Subject.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def subject_params
-      params.require(:subject).permit(:user_id, :title, :description, :value, :board_id)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def subject_params
+    params.require(:subject).permit(:user_id, :title, :description, :value, :board_id)
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vote
-      @vote = Vote.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
 
-    # Only allow a trusted parameter "white list" through.
-    def vote_params
-      params.require(:subject_id)
-    end
 
-    def vote_save
-      @vote.user_id = current_user.id
-      if @vote.save
-        redirect_to :back, notice: 'Vote was successfully created.'
-      else
-        redirect_to :back, alert: 'Vote was not created.'
-      end
-    end
+  # Only allow a trusted parameter "white list" through.
+  def vote_params
+    params.require(:subject_id)
+  end
 end

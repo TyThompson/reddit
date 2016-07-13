@@ -9,10 +9,10 @@
   <%= @comment.subject.description %>
 </p>
 <p>
-  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-up" %>
-  <%= link_to '', boards_url, class: "glyphicon glyphicon-arrow-down" %>
+  <%= link_to '', subject_comment_upvote_path(comment_id: @comment.id), method: :post, class: "glyphicon glyphicon-arrow-up" %>
+  <%= link_to '', subject_comment_downvote_path(comment_id: @comment.id), method: :post, class: "glyphicon glyphicon-arrow-down" %>
   <strong>Votes:</strong>
-  <%= @comment.value %> |
+  <%= Vote.where(comment_id: @comment.id).pluck(:value).sum %> |
   <strong>Created by:</strong>
   <%= @comment.user.email.split('@').first %> |
   <strong>Created at:</strong>

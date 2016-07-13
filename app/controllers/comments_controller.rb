@@ -42,6 +42,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    authorize Comment.where(id: params["comment_id"])
+    @vote = Vote.new(comment_id: vote_params)
+    @vote.value = 1
+    vote_save
+  end
+
+  def downvote
+    authorize Comment.where(id: params["comment_id"])
+    @vote = Vote.new(comment_id: vote_params)
+    @vote.value = -1
+    vote_save
+  end
+
   # DELETE /comments/1
   def destroy
     authorize @comment
@@ -58,5 +72,9 @@ class CommentsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def comment_params
       params.require(:comment).permit(:user_id, :description, :value, :subject_id)
+    end
+
+    def vote_params
+      params.require(:comment_id)
     end
 end
