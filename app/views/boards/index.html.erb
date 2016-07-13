@@ -6,8 +6,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <% if current_user.admin? %>
       <th>Functions</th>
-      <th colspan="10"></th>
+      <% end %>
     </tr>
   </thead>
 
