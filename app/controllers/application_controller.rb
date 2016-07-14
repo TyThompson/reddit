@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :authenticate_user!
 
-  include Pundit
   # after_action :verify_authorized, :except => :index, unless: :devise_controller?
   skip_after_action :verify_authorized, only: [:index, :new, :show, :create]
 
@@ -32,5 +31,5 @@ class ApplicationController < ActionController::Base
     else
       redirect_to :back, alert: 'Vote was not created.'
     end
-  end  
+  end
 end
